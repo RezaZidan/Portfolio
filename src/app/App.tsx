@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import LoadingScreen from "../components/LoadingScreen";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -15,6 +16,9 @@ type Theme = "dark" | "light";
 type Lang = "id" | "us";
 
 export default function App() {
+  /* ================= LOADING ================= */
+  const [ready, setReady] = useState(false);
+
   /* ================= THEME ================= */
   const [theme, setTheme] = useState<Theme>(
     (localStorage.getItem("theme") as Theme) || "dark"
@@ -28,14 +32,29 @@ export default function App() {
   /* ================= SIDEBAR ================= */
   const [collapsed, setCollapsed] = useState(false);
 
+  /* ================= INIT (TIMER ONLY) ================= */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true);
+    }, 1600); // ⏱️ DURASI LOADING
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* ================= THEME EFFECT ================= */
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
+  /* ================= LANG EFFECT ================= */
   useEffect(() => {
     localStorage.setItem("lang", lang);
   }, [lang]);
+
+  if (!ready) {
+    return <LoadingScreen duration={1500} />;
+  }
 
   return (
     <div className="h-screen w-screen overflow-hidden">
@@ -45,7 +64,6 @@ export default function App() {
           ${collapsed ? "grid-cols-[72px_1fr]" : "grid-cols-[260px_1fr]"}
         `}
       >
-        {/* SIDEBAR */}
         <Sidebar
           collapsed={collapsed}
           setCollapsed={setCollapsed}
@@ -55,7 +73,6 @@ export default function App() {
           setLang={setLang}
         />
 
-        {/* MAIN CONTENT */}
         <main className="h-full overflow-y-auto bg-white dark:bg-zinc-950 px-6 py-8 md:px-10 md:py-10">
           <Routes>
             <Route path="/" element={<Home />} />

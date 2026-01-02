@@ -18,7 +18,7 @@ export default function ProjectCard({
   return (
     <Link
       to={`/projects/${slug}`}
-      className="group rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800"
+      className="group rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950"
     >
       {/* IMAGE */}
       <div className="relative overflow-hidden">
@@ -37,14 +37,30 @@ export default function ProjectCard({
 
       {/* CONTENT */}
       <div className="p-4 space-y-2">
-        <h3 className="font-semibold">{name}</h3>
-        <p className="text-sm text-zinc-500">{description}</p>
+        <h3
+          className="
+    font-semibold
+    text-zinc-900 dark:text-zinc-100
+    group-hover:text-zinc-700 dark:group-hover:text-zinc-300
+    transition
+  "
+        >
+          {name}
+        </h3>
+
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          {description}
+        </p>
 
         <div className="flex flex-wrap gap-2 pt-2">
           {tech.map((t) => (
             <span
               key={t}
-              className="text-xs rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-1"
+              className="
+                text-xs rounded-full px-2 py-1
+                bg-zinc-100 text-zinc-700
+                dark:bg-zinc-800 dark:text-zinc-300
+              "
             >
               {t}
             </span>

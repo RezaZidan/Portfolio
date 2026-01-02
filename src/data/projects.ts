@@ -218,4 +218,30 @@ export const projects: Project[] = [
       "Modern responsive interface built with React and Tailwind CSS",
     ],
   },
+  {
+    slug: "career-path",
+    name: "CareerPath – Career Recommendation & Assessment Platform",
+    description:
+      "A web-based career assessment platform that helps students and job seekers discover suitable majors, career paths, or job transitions through interactive tests and personalized results.",
+    thumbnail: "/projects/career-path/thumbnail.jpg",
+    images: [
+      "/projects/career-path/landing.jpg",
+      "/projects/career-path/test.jpg",
+      "/projects/career-path/result.jpg",
+    ],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    introduction:
+      "CareerPath is a web-based career guidance platform designed to help students and job seekers make informed career decisions. The system provides an interactive assessment that analyzes user interests, skills, and preferences to recommend suitable academic majors, career options for fresh graduates, or alternative paths for career switchers. The platform focuses on structured career logic, scoring mechanisms, and clear result visualization to support real-world decision making.",
+    features: [
+      "Landing page with clear value proposition and career use cases",
+      "Interactive career assessment test with multiple question categories",
+      "Support for different modes: choosing a major, finding a first job, or switching careers",
+      "Dynamic scoring and career-matching logic based on user answers",
+      "Personalized career recommendations with match percentage",
+      "Top career highlights and alternative career suggestions",
+      "Printable and shareable career result summary",
+      "Responsive and modern UI built with Tailwind CSS",
+      "Type-safe implementation using Next.js App Router and TypeScript",
+    ],
+  },
 ];

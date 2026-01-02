@@ -21,9 +21,6 @@ export default function Sidebar({
   collapsed: boolean;
   setCollapsed: (v: boolean) => void;
 }) {
-  /* =========================
-     STATE
-  ========================= */
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   /* =========================
@@ -34,61 +31,55 @@ export default function Sidebar({
     theme === "dark"
       ? root.classList.add("dark")
       : root.classList.remove("dark");
-
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "dark" | "light" | null;
-    if (savedTheme) setTheme(savedTheme);
+    const saved = localStorage.getItem("theme") as "dark" | "light" | null;
+    if (saved) setTheme(saved);
   }, []);
 
   return (
     <aside
       className={`
-        h-screen flex flex-col transition-all duration-300
+        h-screen flex flex-col
         bg-white text-zinc-900
         dark:bg-zinc-950 dark:text-zinc-100
         border-r border-zinc-200 dark:border-zinc-800
+        transition-all duration-300
         ${collapsed ? "w-[72px]" : "w-[260px]"}
       `}
     >
       {/* ================= TOP ================= */}
       <div
         className={`
-          flex items-center px-4 py-4
+          flex items-center px-3 py-3 shrink-0
           ${collapsed ? "justify-center" : "justify-between"}
         `}
       >
-        {!collapsed && (
-          <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            Portfolio
-          </span>
-        )}
+        {!collapsed && <span className="text-sm font-semibold">Portfolio</span>}
 
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition"
+          className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
         >
-          <Menu size={collapsed ? 22 : 20} />
+          <Menu size={20} />
         </button>
       </div>
 
       {/* ================= PROFILE ================= */}
       {!collapsed && (
-        <div className="flex flex-col items-center px-6 py-6 gap-3">
+        <div className="flex flex-col items-center px-4 py-4 gap-2 shrink-0">
           <img
             src={profileImage}
             alt="Reza Zidan Hanafi"
+            className="w-12 h-12 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-800"
             draggable={false}
-            className="w-20 h-20 rounded-full object-cover ring-2 ring-zinc-200 dark:ring-zinc-800"
           />
 
-          <h2 className="font-semibold text-zinc-900 dark:text-zinc-100">
-            Reza Zidan Hanafi
-          </h2>
+          <h2 className="text-sm font-semibold">Reza Zidan Hanafi</h2>
 
-          <span className="text-xs text-zinc-500 dark:text-zinc-400">
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400">
             Full-Stack Developer
           </span>
 
@@ -96,20 +87,23 @@ export default function Sidebar({
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="
-              mt-2 p-2 rounded-md transition
+              mt-1 p-1.5 rounded-md
               bg-zinc-100 hover:bg-zinc-200
               dark:bg-zinc-900 dark:hover:bg-zinc-800
               text-zinc-700 dark:text-zinc-300
             "
           >
-            {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
+            {theme === "dark" ? <Moon size={14} /> : <Sun size={14} />}
           </button>
         </div>
       )}
 
-      {/* ================= NAV ================= */}
+      {/* ================= NAV (SCROLLABLE) ================= */}
       <nav
-        className={`flex-1 px-3 mt-2 ${collapsed ? "space-y-3" : "space-y-2"}`}
+        className="
+          flex-1 overflow-y-auto px-3
+          space-y-1
+        "
       >
         <NavItem to="/" icon={Home} label="Home" collapsed={collapsed} />
         <NavItem to="/about" icon={User} label="About" collapsed={collapsed} />
@@ -145,9 +139,9 @@ export default function Sidebar({
         />
       </nav>
 
-      {/* ================= FOOTER ================= */}
+      {/* ================= FOOTER (FIXED BOTTOM) ================= */}
       {!collapsed && (
-        <div className="px-6 py-4 text-xs text-zinc-500 dark:text-zinc-600">
+        <div className="px-4 py-3 text-[11px] text-zinc-500 dark:text-zinc-600 shrink-0">
           © 2025 Reza
         </div>
       )}
@@ -175,8 +169,8 @@ function NavItem({
       end
       className={({ isActive }) =>
         `
-        relative flex items-center rounded-lg transition
-        ${collapsed ? "justify-center px-2 py-3" : "gap-3 px-4 py-3"}
+        relative flex items-center rounded-md transition
+        ${collapsed ? "justify-center px-2 py-2.5" : "gap-3 px-3 py-2.5"}
         ${
           isActive
             ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100"
@@ -188,12 +182,12 @@ function NavItem({
       <span
         className="
           absolute left-0 top-1/2 -translate-y-1/2
-          h-6 w-1 rounded-r
+          h-5 w-[3px] rounded-r
           bg-zinc-400 dark:bg-zinc-600
         "
       />
-      <Icon size={collapsed ? 22 : 18} className="shrink-0" />
-      {!collapsed && <span className="text-sm">{label}</span>}
+      <Icon size={collapsed ? 20 : 16} />
+      {!collapsed && <span className="text-[13px]">{label}</span>}
     </NavLink>
   );
 }

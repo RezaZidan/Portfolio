@@ -1,12 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { hardskills } from "../data/hardskill";
 
 export default function About() {
   const [animateBar, setAnimateBar] = useState(false);
+  const skillRef = useRef<HTMLDivElement | null>(null);
 
+  /* ================= INTERSECTION OBSERVER ================= */
   useEffect(() => {
-    const t = setTimeout(() => setAnimateBar(true), 50);
-    return () => clearTimeout(t);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateBar(true);
+          observer.disconnect(); // jalan sekali saja
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (skillRef.current) observer.observe(skillRef.current);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -45,7 +58,7 @@ export default function About() {
       </section>
 
       {/* ================= PROFESSIONAL SKILLS ================= */}
-      <section>
+      <section ref={skillRef}>
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
           Professional Skills
         </h2>
@@ -56,13 +69,14 @@ export default function About() {
         </p>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {hardskills.map((skill) => (
+          {hardskills.map((skill, i) => (
             <SkillBar
               key={skill.name}
               name={skill.name}
               percent={skill.percent}
               desc={skill.desc}
               animate={animateBar}
+              delay={i * 120} // 🔥 STAGGER
             />
           ))}
         </div>
@@ -112,11 +126,10 @@ function CountStat({
 
   useEffect(() => {
     let current = 0;
-    const duration = 700;
-    const step = Math.max(1, Math.floor(duration / value));
+    const step = Math.max(1, Math.floor(700 / value));
 
     const timer = setInterval(() => {
-      current += 1;
+      current++;
       setCount(current);
       if (current >= value) clearInterval(timer);
     }, step);
@@ -155,11 +168,13 @@ function SkillBar({
   percent,
   desc,
   animate,
+  delay,
 }: {
   name: string;
   percent: number;
   desc: string;
   animate: boolean;
+  delay: number;
 }) {
   return (
     <div className="rounded-2xl p-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
@@ -173,7 +188,10 @@ function SkillBar({
       <div className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
         <div
           className="h-full bg-zinc-900 dark:bg-zinc-100 rounded-full transition-all duration-1000 ease-out"
-          style={{ width: animate ? `${percent}%` : "0%" }}
+          style={{
+            width: animate ? `${percent}%` : "0%",
+            transitionDelay: animate ? `${delay}ms` : "0ms",
+          }}
         />
       </div>
 
