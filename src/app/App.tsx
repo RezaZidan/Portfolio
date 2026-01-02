@@ -19,15 +19,11 @@ export default function App() {
   /* ================= LOADING ================= */
   const [ready, setReady] = useState(false);
 
-  /* ================= THEME ================= */
-  const [theme, setTheme] = useState<Theme>(
+  const [theme] = useState<Theme>(
     (localStorage.getItem("theme") as Theme) || "dark"
   );
 
-  /* ================= LANGUAGE ================= */
-  const [lang, setLang] = useState<Lang>(
-    (localStorage.getItem("lang") as Lang) || "id"
-  );
+  const [lang] = useState<Lang>((localStorage.getItem("lang") as Lang) || "id");
 
   /* ================= SIDEBAR ================= */
   const [collapsed, setCollapsed] = useState(false);
