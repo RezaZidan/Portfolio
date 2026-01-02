@@ -34,10 +34,7 @@ export default function App() {
 
   /* ================= INIT (TIMER ONLY) ================= */
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setReady(true);
-    }, 1600); // ⏱️ DURASI LOADING
-
+    const timer = setTimeout(() => setReady(true), 1600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -64,14 +61,8 @@ export default function App() {
           ${collapsed ? "grid-cols-[72px_1fr]" : "grid-cols-[260px_1fr]"}
         `}
       >
-        <Sidebar
-          collapsed={collapsed}
-          setCollapsed={setCollapsed}
-          theme={theme}
-          setTheme={setTheme}
-          lang={lang}
-          setLang={setLang}
-        />
+        {/* ✅ FIX DI SINI */}
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
         <main className="h-full overflow-y-auto bg-white dark:bg-zinc-950 px-6 py-8 md:px-10 md:py-10">
           <Routes>
