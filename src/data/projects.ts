@@ -244,4 +244,33 @@ export const projects: Project[] = [
       "Type-safe implementation using Next.js App Router and TypeScript",
     ],
   },
+  {
+    slug: "noir-cafe",
+    name: "NOIR Café – Modern & Elegant Café Landing Page",
+    description:
+      "A modern one-page café landing website designed to showcase a premium coffee brand through elegant visuals, smooth animations, and an interactive browsing experience.",
+    thumbnail: "/projects/noir-cafe/thumbnail.jpg",
+    images: [
+      "/projects/noir-cafe/hero.jpg",
+      "/projects/noir-cafe/menu.jpg",
+      "/projects/noir-cafe/gallery.jpg",
+      "/projects/noir-cafe/contact.jpg",
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    introduction:
+      "NOIR Café is a modern, single-page landing website built to represent a premium café brand with a strong focus on atmosphere, storytelling, and user experience. The website is designed to go beyond a static template by combining cinematic layouts, smooth scroll-based interactions, and refined animations. It aims to simulate a real café brand presence, suitable for presentation, portfolio use, or further development into a production-ready website.",
+    features: [
+      "Cinematic hero section with parallax background and split-text animation",
+      "Sticky navigation with active section highlighting and smooth scrolling",
+      "About section with animated counters and parallax imagery",
+      "Signature menu section highlighting featured items with scroll-to-menu interaction",
+      "Comprehensive menu section with category grouping and hot/cold variants",
+      "Real-time menu search to quickly filter items by name",
+      "Responsive gallery grid with animated hover effects",
+      "Lightbox gallery with keyboard (ESC) support",
+      "Contact section with address, opening hours, Google Maps embed, and WhatsApp CTA",
+      "Fully responsive layout optimized for desktop and mobile devices",
+      "Clean and scalable component-based architecture using React and TypeScript",
+    ],
+  },
 ];
