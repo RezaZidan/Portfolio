@@ -273,4 +273,36 @@ export const projects: Project[] = [
       "Clean and scalable component-based architecture using React and TypeScript",
     ],
   },
+  {
+    slug: "noir-store",
+    name: "NOIR – Streetwear & Casual Fashion Landing Page",
+    description:
+      "A modern one-page fashion store landing website designed to showcase curated streetwear and casual apparel through cinematic visuals, smooth scroll interactions, and a direct WhatsApp ordering experience.",
+    thumbnail: "/projects/noir-store/thumbnail.jpg",
+    images: [
+      "/projects/noir-store/hero.jpg",
+      "/projects/noir-store/categories.jpg",
+      "/projects/noir-store/shop.jpg",
+      "/projects/noir-store/product-modal.jpg",
+      "/projects/noir-store/faq.jpg",
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    introduction:
+      "NOIR Store is a modern, single-page fashion landing website built to represent a streetwear and casual clothing brand with a strong focus on clarity, simplicity, and human-centered user experience. Instead of relying on complex checkout systems, the website emphasizes transparent product information, visual storytelling, and direct communication through WhatsApp. Designed with an editorial layout and smooth interactions, NOIR Store aims to simulate a real-world fashion brand presence suitable for portfolio showcase, UI/UX exploration, or further development into a production-ready storefront.",
+    features: [
+      "Cinematic hero section with large-scale imagery and subtle scroll-based motion",
+      "Advanced sticky navigation with scroll-based background transition, hide-on-scroll behavior, and active section tracking",
+      "Editorial-style About section focusing on brand philosophy and storytelling",
+      "Visual category section with image-based tiles and immersive hover animations",
+      "Product catalog with category filtering, keyword search, and smart sorting (recommended, newest, price ascending and descending)",
+      "Responsive product grid with animated product cards and minimum-price display per item",
+      "Focused product detail modal with scroll lock, dynamic size selection, and real-time price updates",
+      "Direct WhatsApp checkout flow with prefilled order message based on selected product and size",
+      "Brand-styled floating WhatsApp chat button integrated seamlessly into the UI",
+      "Why Us section using an editorial approach to communicate trust and value propositions",
+      "Interactive FAQ section using accordion-style disclosure for clarity and ease of use",
+      "Fully responsive layout optimized for desktop, tablet, and mobile devices",
+      "Clean and scalable component-based architecture using React and TypeScript",
+    ],
+  },
 ];
