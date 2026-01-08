@@ -305,4 +305,38 @@ export const projects: Project[] = [
       "Clean and scalable component-based architecture using React and TypeScript",
     ],
   },
+  {
+    slug: "poli-smart",
+    name: "PoliSmart – Smart Clinic & Puskesmas Management Web",
+    description:
+      "A role-based clinic and puskesmas web application prototype designed to streamline patient flow, medical services, and administrative operations through a clean, mobile-first, and human-centered interface.",
+    thumbnail: "/projects/poli-smart/thumbnail.jpg",
+    images: [
+      "/projects/poli-smart/login.jpg",
+      "/projects/poli-smart/patient-dashboard.jpg",
+      "/projects/poli-smart/doctor-dashboard.jpg",
+      "/projects/poli-smart/admin-dashboard.jpg",
+      "/projects/poli-smart/chat.jpg",
+    ],
+    tech: ["HTML", "CSS", "Bootstrap 5", "JavaScript"],
+    introduction:
+      "PoliSmart is a multi-role clinic and puskesmas management web prototype built to simulate real-world healthcare service workflows. The system is designed around three core user roles—Patient, Doctor, and Admin—each with dedicated dashboards, navigation structures, and task-oriented interfaces. Instead of focusing on backend complexity, PoliSmart emphasizes clarity of information, efficient service flow, and a consistent mobile-first experience. The project demonstrates how a healthcare system can be structured visually and logically before full backend integration, making it suitable for portfolio showcase, UI/UX validation, and system design exploration.",
+    features: [
+      "Role-based authentication flow for Patient, Doctor, and Admin using localStorage",
+      "Patient dashboard with queue registration, real-time queue status, and health summary indicators",
+      "Medical history tracking displaying poli, complaints, doctor, facility, patient type, and status",
+      "Prescription module with detailed medicine view via modal interface",
+      "Control schedule page showing upcoming follow-up appointments with status indicators",
+      "Doctor dashboard featuring daily patient summary, active queue, control schedules, and medicine availability overview",
+      "Patient examination list for doctors with completion status handling",
+      "Admin dashboard providing operational overview including patient volume, active doctors, medical records, and service progress",
+      "Task-based admin workflow for patient management, scheduling, and monitoring",
+      "Integrated chat feature simulating real-time communication between patients and doctors",
+      "Consistent bottom navigation system customized per role with clear active-state indicators",
+      "Mobile-first responsive layout optimized for smartphones, tablets, and desktop screens",
+      "Reusable card-based UI components with clear visual hierarchy and spacing",
+      "Dark mode support with persistent preference using localStorage",
+      "Structured and scalable frontend architecture ready for backend integration",
+    ],
+  },
 ];
