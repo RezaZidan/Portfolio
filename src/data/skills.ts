@@ -80,9 +80,16 @@ export const skills: Skill[] = [
     name: "Laragon",
     icon: "https://worldvectorlogo.com/logos/laragon.svg",
   },
-
   {
     name: "XAMPP",
     icon: "https://www.apachefriends.org/images/xampp-logo-ac950edf.svg",
+  },
+  {
+    name: "Next.js",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+  },
+  {
+    name: "Git",
+    icon: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
   },
 ];
