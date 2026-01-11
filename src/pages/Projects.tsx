@@ -1,5 +1,6 @@
 // pages/projects.tsx
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 
 export default function Projects() {
@@ -58,13 +59,15 @@ export default function Projects() {
       <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.length > 0 ? (
           filtered.map((project) => (
-            <div
+            <Link
               key={project.slug}
+              to={`/projects/${project.slug}`}
               className="
-                group rounded-2xl overflow-hidden transition
+                group block rounded-2xl overflow-hidden transition
                 bg-white dark:bg-zinc-900
                 border border-zinc-200 dark:border-zinc-800
                 hover:border-zinc-300 dark:hover:border-zinc-700
+                focus:outline-none focus:ring-2 focus:ring-zinc-400
               "
             >
               <div className="overflow-hidden">
@@ -93,11 +96,9 @@ export default function Projects() {
                     <span
                       key={t}
                       className="
-                        inline-block
-                        rounded-full
+                        inline-block rounded-full
                         border border-zinc-300 dark:border-zinc-700
-                        px-2.5 py-1
-                        text-xs
+                        px-2.5 py-1 text-xs
                         text-zinc-700 dark:text-zinc-300
                         bg-white dark:bg-zinc-900
                       "
@@ -107,7 +108,7 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p className="text-zinc-500 dark:text-zinc-400 col-span-full text-center mt-4">
