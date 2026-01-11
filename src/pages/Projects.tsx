@@ -1,8 +1,6 @@
 // pages/projects.tsx
 import { useState, useMemo } from "react";
-import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
-import type { Project } from "../data/projects";
 
 export default function Projects() {
   const [search, setSearch] = useState("");
