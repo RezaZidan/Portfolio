@@ -441,8 +441,8 @@ export const projects: Project[] = [
       "/projects/furniturelux/categories.jpg",
       "/projects/furniturelux/rooms.jpg",
       "/projects/furniturelux/products.jpg",
+      "/projects/furniturelux/collections.jpg",
       "/projects/furniturelux/testimonials.jpg",
-      "/projects/furniturelux/footer.jpg",
     ],
     tech: [
       "React 18",
